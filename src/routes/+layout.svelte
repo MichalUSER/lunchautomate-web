@@ -1,0 +1,50 @@
+<script lang="ts">
+	// The ordering of these imports is critical to your app working properly
+	import '../theme.postcss';
+	import '@skeletonlabs/skeleton/styles/all.css';
+	import '../app.postcss';
+	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	import { session } from '$lib/utilities/stores';
+	import { goto } from '$app/navigation';
+	import Cookies from 'js-cookie';
+	import IcBaselineLogout from '~icons/ic/baseline-logout';
+
+	function logOut() {
+		$session = undefined;
+		Cookies.remove('username');
+		Cookies.remove('subdomain');
+		Cookies.remove('sessionId');
+		goto('/');
+	}
+</script>
+
+<AppShell>
+	<svelte:fragment slot="header">
+		<AppBar>
+			<svelte:fragment slot="lead">
+				<strong class="text-xl uppercase">lunchautomate</strong>
+			</svelte:fragment>
+			<svelte:fragment slot="trail">
+				{#if $session}
+					<div class="flex justify-center divide-x divide-surface-900 dark:divide-surface-50">
+						<strong class="px-2">{$session.username}</strong>
+						<p class="px-2">{$session.subdomain}</p>
+					</div>
+					<button class="btn p-0" on:click={logOut}>
+						<IcBaselineLogout />
+					</button>
+				{/if}
+				<a
+					class="btn btn-sm variant-ghost-surface"
+					href="https://github.com/MichalUSER/lunchautomate"
+					target="_blank"
+					rel="noreferrer"
+				>
+					GitHub
+				</a>
+				<LightSwitch />
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+	<slot />
+</AppShell>
