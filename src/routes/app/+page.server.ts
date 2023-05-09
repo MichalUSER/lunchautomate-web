@@ -14,7 +14,8 @@ export const load = (async ({ cookies, fetch }) => {
 				Authorization: `Bearer ${sessionId}`,
 				Cookie:
 					cookies.serialize('username', username) + ';' + cookies.serialize('subdomain', subdomain)
-			}
+			},
+			credentials: 'omit'
 		});
 		if (!res.ok) throw undefined;
 
@@ -31,6 +32,6 @@ export const load = (async ({ cookies, fetch }) => {
 	} catch (e) {
 		cookies.delete('sessionId');
 		cookies.delete('password');
-		throw redirect(307, '/');
+		throw redirect(308, '/');
 	}
 }) satisfies PageServerLoad;

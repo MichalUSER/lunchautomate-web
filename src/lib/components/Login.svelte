@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { URL } from '$lib/utilities/config';
+	import { loading } from '$lib/utilities/stores';
 	import Cookies from 'js-cookie';
 	import { createEventDispatcher } from 'svelte';
 
@@ -8,6 +9,7 @@
 	let text = '';
 
 	async function onSubmit(e: Event) {
+		$loading = true;
 		const formEl = e.target as HTMLFormElement;
 		const data = new FormData(formEl);
 		const json = Object.fromEntries(data.entries());
@@ -29,6 +31,7 @@
 		} catch (e: any) {
 			text = e;
 		}
+		$loading = false;
 	}
 </script>
 

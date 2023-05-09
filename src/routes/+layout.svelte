@@ -4,16 +4,17 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
-	import { session } from '$lib/utilities/stores';
+	import { session, loading } from '$lib/utilities/stores';
 	import { goto } from '$app/navigation';
 	import Cookies from 'js-cookie';
+	import SvgSpinnersBarsScaleMiddle from '~icons/svg-spinners/bars-scale-middle';
 	import IcBaselineLogout from '~icons/ic/baseline-logout';
 
 	function logOut() {
-		$session = undefined;
 		Cookies.remove('username');
 		Cookies.remove('subdomain');
 		Cookies.remove('sessionId');
+		$session = undefined;
 		goto('/');
 	}
 </script>
@@ -46,5 +47,11 @@
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>
+	<div class="absolute w-full">
+		<SvgSpinnersBarsScaleMiddle
+			opacity={$loading ? '1' : '0'}
+			class="w-6 h-6 z-10 block mx-auto mt-10 text-slate-700-100-token transition"
+		/>
+	</div>
 	<slot />
 </AppShell>
