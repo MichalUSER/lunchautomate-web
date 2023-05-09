@@ -13,6 +13,7 @@
 	},
 	"devDependencies": {
 		"@iconify-json/ic": "^1.1.13",
+		"@iconify-json/svg-spinners": "^1.1.1",
 		"@skeletonlabs/skeleton": "^1.2.0",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.5.0",

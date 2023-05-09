@@ -39,15 +39,15 @@
 	>
 		<h2>EduPage Login</h2>
 		<div class="w-full flex flex-col items-center gap-y-3">
-			<label>
+			<label class="label w-full">
 				<span>Username</span>
 				<input type="text" name="username" class="input" />
 			</label>
-			<label>
+			<label class="label w-full">
 				<span>Password</span>
 				<input type="password" name="password" class="input" />
 			</label>
-			<label>
+			<label class="label w-full">
 				<span>Subdomain</span>
 				<input type="text" name="subdomain" class="input" />
 			</label>
@@ -63,9 +63,6 @@
 </main>
 
 <style lang="postcss">
-	label {
-		@apply label w-full;
-	}
 	.input {
 		@apply py-3 px-5;
 	}
