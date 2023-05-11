@@ -12,19 +12,23 @@
 		$loading = true;
 		const formEl = e.target as HTMLFormElement;
 		const data = new FormData(formEl);
-		const json = Object.fromEntries(data.entries());
+		const formData = Object.fromEntries(data.entries());
 		try {
 			const res = await fetch(`${URL}/authenticate`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				credentials: 'include',
-				body: JSON.stringify(json)
+				// credentials: 'include',
+				body: JSON.stringify(formData)
 			});
 			if (!res.ok) throw 'Invalid credentials';
-			const password = json.password.toString();
+			const password = formData.password.toString();
 			Cookies.set('password', password, { sameSite: 'None', secure: true });
+			const data = await res.json();
+			for (const cookie of data.cookies) {
+				Cookies.set(cookie.key, cookie.value, { sameSite: 'None', secure: true });
+			}
 
 			text = 'Success';
 			dispatch('success');
