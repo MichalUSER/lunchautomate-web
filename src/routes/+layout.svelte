@@ -11,9 +11,8 @@
 	import IcBaselineLogout from '~icons/ic/baseline-logout';
 
 	function logOut() {
-		Cookies.remove('username');
-		Cookies.remove('subdomain');
 		Cookies.remove('sessionId');
+		Cookies.remove('password');
 		$session = undefined;
 		goto('/');
 	}
