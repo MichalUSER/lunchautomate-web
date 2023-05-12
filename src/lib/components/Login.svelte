@@ -19,7 +19,6 @@
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				// credentials: 'include',
 				body: JSON.stringify(formData)
 			});
 			if (!res.ok) throw 'Invalid credentials';
