@@ -38,35 +38,33 @@
 	}
 </script>
 
-<main class="w-full h-full flex justify-center items-center">
-	<form
-		class="flex flex-col gap-y-14 items-center rounded-md px-14 py-10 w-full max-w-md drop-shadow-xl bg-surface-200-700-token"
-		on:submit|preventDefault={onSubmit}
+<form
+	class="flex flex-col gap-y-14 items-center rounded-md px-14 py-10 w-full max-w-md drop-shadow-xl bg-surface-200-700-token"
+	on:submit|preventDefault={onSubmit}
+>
+	<h2>EduPage Login</h2>
+	<div class="w-full flex flex-col items-center gap-y-3">
+		<label class="label w-full">
+			<span>Username</span>
+			<input type="text" name="username" class="input" />
+		</label>
+		<label class="label w-full">
+			<span>Password</span>
+			<input type="password" name="password" class="input" />
+		</label>
+		<label class="label w-full">
+			<span>Subdomain</span>
+			<input type="text" name="subdomain" class="input" />
+		</label>
+	</div>
+	<p
+		class={text == 'Success' ? 'text-success-500' : 'text-error-900 dark:text-error-400'}
+		hidden={text.length == 0}
 	>
-		<h2>EduPage Login</h2>
-		<div class="w-full flex flex-col items-center gap-y-3">
-			<label class="label w-full">
-				<span>Username</span>
-				<input type="text" name="username" class="input" />
-			</label>
-			<label class="label w-full">
-				<span>Password</span>
-				<input type="password" name="password" class="input" />
-			</label>
-			<label class="label w-full">
-				<span>Subdomain</span>
-				<input type="text" name="subdomain" class="input" />
-			</label>
-		</div>
-		<p
-			class={text == 'Success' ? 'text-success-500' : 'text-error-900 dark:text-error-400'}
-			hidden={text.length == 0}
-		>
-			{text}
-		</p>
-		<button class="btn variant-filled-primary">Login</button>
-	</form>
-</main>
+		{text}
+	</p>
+	<button class="btn variant-filled-primary">Login</button>
+</form>
 
 <style lang="postcss">
 	.input {

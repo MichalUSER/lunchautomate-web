@@ -28,19 +28,17 @@
 	}
 </script>
 
-<main class="flex flex-col w-full h-full items-center justify-center">
-	<div class="flex flex-col items-center gap-y-16 card p-5 w-full max-w-md">
-		<h3>Status</h3>
-		<p>
-			Ordering lunches: <span
-				class="font-bold text-md ml-1 {data.exists ? 'text-success-700' : 'text-error-500'}"
-				>{data.exists ? 'ON' : 'OFF'}</span
-			>
-		</p>
-		{#if data.exists}
-			<button class="btn variant-filled-error" on:click={() => toggleUser(false)}>Turn off</button>
-		{:else}
-			<button class="btn variant-filled-success" on:click={() => toggleUser(true)}>Turn on</button>
-		{/if}
-	</div>
-</main>
+<div class="flex flex-col items-center gap-y-16 card p-5 w-full max-w-md">
+	<h3>Status</h3>
+	<p>
+		Ordering lunches: <span
+			class="font-bold text-md ml-1 {data.exists ? 'text-success-700' : 'text-error-500'}"
+			>{data.exists ? 'ON' : 'OFF'}</span
+		>
+	</p>
+	{#if data.exists}
+		<button class="btn variant-filled-error" on:click={() => toggleUser(false)}>Turn off</button>
+	{:else}
+		<button class="btn variant-filled-success" on:click={() => toggleUser(true)}>Turn on</button>
+	{/if}
+</div>

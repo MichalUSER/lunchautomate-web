@@ -52,5 +52,7 @@
 			class="w-6 h-6 z-10 block mx-auto mt-10 text-slate-700-100-token transition"
 		/>
 	</div>
-	<slot />
+	<main class="w-full h-full flex justify-center items-center">
+		<slot />
+	</main>
 </AppShell>
